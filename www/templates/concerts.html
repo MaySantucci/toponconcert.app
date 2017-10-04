@@ -1,0 +1,24 @@
+<ion-view view-title="Concerti">
+    <ion-content>
+       <!--
+        <ion-list>
+            <ion-item ng-repeat="concert in concerts" href="#/app/concerts/{{concert.id}}">
+                {{concert.title}}
+            </ion-item>
+        </ion-list>
+       -->
+        <ion-list>
+            <ion-item ng-repeat="concert in concerts" href="#/app/concerts/{{concert.id}}">
+                <ion-avatar item-start>
+                    <img src="#">
+                </ion-avatar>
+                <p>{{concert.id}} - {{concert.artist}}</p>
+                <p>{{concert.location}}</p>
+                <p>{{concert.day_concert}}</p>
+            </ion-item>
+        </ion-list>
+
+
+
+    </ion-content>
+</ion-view>

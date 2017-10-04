@@ -12,31 +12,26 @@ angular.module('starter.controllers', [])
         })
 
 
-        .controller('ConcertsCtrl', function ($scope) {
-            $scope.concerts = [
-                {id: 1, artist: 'Metallica', location: 'Roma', day_concert: '21/02/2018'},
-                {id: 2, artist: 'Red Hot Chili Peppers', location: 'Roma', day_concert: '21/02/2018'},
-                {id: 3, artist: 'Linkin Park', location: 'Roma', day_concert: '21/02/2018'},
-                {id: 4, artist: 'Einaudi', location: 'Roma', day_concert: '21/02/2018'},
-                {id: 5, artist: 'Allevi', location: 'Roma', day_concert: '21/02/2018'},
-            ];
-
-            function getConcerts() {
-                var xhttp = new XMLHttpRequest();
-                xhttp.open("POST", "http://toponconcert.com/api/V1/concert", false);
-                xhttp.setRequestHeader("Content-type", "application/json");
-                xhttp.send();
-                return JSON.parse(xhttp.responseText);
-            }
-
-            getConcerts();
+        .controller('ConcertsCtrl', function ($rootScope, $scope) {
+            $scope.concerts = [];
+            $.getJSON('http://toponconcert.com/api/V1/concert', function (data) {
+                console.log($scope);
+                $scope.concerts = data.concerts;
+                $rootScope.$applyAsync();
+                console.log(data.concerts);
+            });
 
         })
 
-        .controller('ConcertCtrl', function ($scope, $stateParams) {
-
-            $id = $stateParams.concertId;
-            console.log($id);
+        .controller('ConcertCtrl', function ($scope, $stateParams, $rootScope) {
+            var id = $stateParams.concertId;
+            $.getJSON('http://toponconcert.com/api/V1/concert/'+ id, function (data) {
+                console.log($scope);
+                $scope.concert = data.concert;
+                $rootScope.$applyAsync();
+                
+                console.log(data.concert);
+            });
 
             //@todo stampare i dati del concerto con id = $id
         })

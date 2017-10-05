@@ -32,8 +32,6 @@ angular.module('starter.controllers', [])
                 
                 console.log(data.concert);
             });
-
-            //@todo stampare i dati del concerto con id = $id
         })
 
 

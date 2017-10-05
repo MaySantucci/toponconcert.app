@@ -1,9 +1,14 @@
 <ion-view view-title="Concerto">
     <ion-content>
-        <p>{{concert.id}} - {{concert.artist}}</p>
-        <p>{{concert.location}}</p>
-        <p>{{concert.date}}</p>
-        <p>{{concert.availability}}</p>
-        <p>{{concert.organizer}}</p>
+        <div>
+            <h4>Dettagli concerto: </h4>
+        </div>
+        <div>
+            <p><label>Gruppo: </label> <b>{{concert.id}} - {{concert.artist}}</b></p>
+            <p><label>Luogo </label> <b>{{concert.location}}</b></p>
+            <p><label>Data </label> <b>{{concert.date}}</b></p>
+            <p><label>Disponibilit&agrave; </label> <b>{{concert.availability}}</b></p>
+            <p><label>Organizzatore </label> <b>{{concert.organizer}}</b></p>
+        </div>
     </ion-content>
 </ion-view>
